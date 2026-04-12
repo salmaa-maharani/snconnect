@@ -1,0 +1,70 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height: 100vh; }
+
+/* AUTH */
+#auth-page {
+  display: flex; justify-content: center; align-items: center; height: 100vh;
+}
+.auth-box {
+  background: #16213e; padding: 30px; border-radius: 12px; width: 350px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+.auth-box h2 { text-align: center; margin-bottom: 20px; color: #e94560; }
+.tab-buttons { display: flex; margin-bottom: 20px; }
+.tab-buttons button {
+  flex: 1; padding: 10px; border: none; cursor: pointer;
+  background: #0f3460; color: white; font-size: 14px;
+}
+.tab-buttons button.active { background: #e94560; }
+.auth-box input {
+  width: 100%; padding: 10px; margin-bottom: 12px;
+  background: #0f3460; border: none; border-radius: 6px; color: white;
+}
+.auth-box button[onclick] {
+  width: 100%; padding: 10px; background: #e94560;
+  border: none; border-radius: 6px; color: white; cursor: pointer; font-size: 15px;
+}
+.msg { margin-top: 10px; text-align: center; font-size: 13px; color: #f0c040; }
+
+/* CHAT */
+#chat-page { display: flex; height: 100vh; }
+.sidebar {
+  width: 220px; background: #16213e; padding: 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.sidebar h3 { color: #e94560; margin-bottom: 10px; }
+.room-btn {
+  padding: 10px; background: #0f3460; border: none;
+  border-radius: 8px; color: white; cursor: pointer; text-align: left; font-size: 14px;
+}
+.room-btn:hover, .room-btn.active { background: #e94560; }
+.logout-btn {
+  margin-top: auto; padding: 10px; background: #333;
+  border: none; border-radius: 8px; color: white; cursor: pointer;
+}
+#current-user { font-size: 13px; color: #aaa; }
+
+.chat-area { flex: 1; display: flex; flex-direction: column; }
+.chat-header {
+  padding: 15px 20px; background: #16213e; border-bottom: 1px solid #0f3460;
+}
+#messages {
+  flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;
+}
+.message { max-width: 70%; padding: 10px 14px; border-radius: 12px; font-size: 14px; }
+.message.mine { background: #e94560; align-self: flex-end; }
+.message.others { background: #16213e; align-self: flex-start; }
+.message .sender { font-size: 11px; color: #aaa; margin-bottom: 4px; }
+.message .time { font-size: 10px; color: #aaa; margin-top: 4px; text-align: right; }
+
+.input-area {
+  display: flex; padding: 15px; background: #16213e; gap: 10px;
+}
+.input-area input {
+  flex: 1; padding: 12px; background: #0f3460;
+  border: none; border-radius: 8px; color: white; font-size: 14px;
+}
+.input-area button {
+  padding: 12px 20px; background: #e94560;
+  border: none; border-radius: 8px; color: white; cursor: pointer;
+}

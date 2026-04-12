@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Distributed Chat App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HALAMAN LOGIN/REGISTER -->
+<div id="auth-page">
+  <div class="auth-box">
+    <h2>💬 Distributed Chat</h2>
+
+    <div class="tab-buttons">
+      <button onclick="showTab('login')" id="tab-login" class="active">Login</button>
+      <button onclick="showTab('register')" id="tab-register">Register</button>
+    </div>
+
+    <!-- Form Login -->
+    <div id="login-form">
+      <input type="text" id="login-username" placeholder="Username">
+      <input type="password" id="login-password" placeholder="Password">
+      <button onclick="login()">Login</button>
+      <p id="login-msg" class="msg"></p>
+    </div>
+
+    <!-- Form Register -->
+    <div id="register-form" style="display:none">
+      <input type="text" id="reg-username" placeholder="Username">
+      <input type="password" id="reg-password" placeholder="Password">
+      <button onclick="register()">Register</button>
+      <p id="reg-msg" class="msg"></p>
+    </div>
+  </div>
+</div>
+
+<!-- HALAMAN CHAT -->
+<div id="chat-page" style="display:none">
+  <div class="sidebar">
+    <h3>💬 Chat Rooms</h3>
+    <button onclick="joinRoom('general')" class="room-btn">🌐 General</button>
+    <button onclick="joinRoom('random')" class="room-btn">🎲 Random</button>
+    <button onclick="joinRoom('tech')" class="room-btn">💻 Tech</button>
+    <hr>
+    <p id="current-user"></p>
+    <button onclick="logout()" class="logout-btn">Logout</button>
+  </div>
+
+  <div class="chat-area">
+    <div class="chat-header">
+      <h3 id="room-title">Pilih Room</h3>
+    </div>
+    <div id="messages"></div>
+    <div class="input-area">
+      <input type="text" id="msg-input" placeholder="Ketik pesan..." 
+             onkeypress="if(event.key==='Enter') sendMessage()">
+      <button onclick="sendMessage()">Kirim</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
