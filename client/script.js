@@ -1,4 +1,4 @@
-const SERVER = 'http://localhost:3000';
+const SERVER = 'https://distributed-chat-production.up.railway.app';
 const socket = io(SERVER);
 
 let currentUser = '';
