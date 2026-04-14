@@ -5,6 +5,25 @@ let currentUser = '';
 let currentRoom = '';
 let replyTo = null;
 
+// =====================
+// BROWSER NOTIFICATION
+// =====================
+function requestNotifPermission() {
+  if ('Notification' in window) {
+    Notification.requestPermission();
+  }
+}
+requestNotifPermission();
+
+function showBrowserNotif(username, message) {
+  if ('Notification' in window && Notification.permission === 'granted') {
+    new Notification(`💬 Pesan baru dari ${username}`, {
+      body: message,
+      icon: 'https://cdn-icons-png.flaticon.com/512/134/134914.png'
+    });
+  }
+}
+
 function showTab(tab) {
   document.getElementById('login-form').style.display = tab === 'login' ? 'block' : 'none';
   document.getElementById('register-form').style.display = tab === 'register' ? 'block' : 'none';
@@ -95,6 +114,7 @@ function cancelReply() {
 socket.on('receive_message', (data) => {
   if (data.username !== currentUser) {
     playNotifSound();
+    showBrowserNotif(data.username, data.message);
   }
   displayMessage(data.username, data.message, data.created_at, data.replyTo);
 });
