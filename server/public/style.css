@@ -68,3 +68,44 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
   padding: 12px 20px; background: #e94560;
   border: none; border-radius: 8px; color: white; cursor: pointer;
 }
+.reply-bubble {
+  background: rgba(255,255,255,0.1);
+  border-left: 3px solid #e94560;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #aaa;
+  margin-bottom: 4px;
+}
+.reply-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 0;
+}
+.reply-btn:hover { color: #e94560; }
+.time-reply {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+#reply-preview {
+  padding: 8px 15px;
+  background: #0f3460;
+  border-left: 3px solid #e94560;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #aaa;
+}
+#reply-preview button {
+  background: none;
+  border: none;
+  color: #e94560;
+  cursor: pointer;
+  font-size: 16px;
+}

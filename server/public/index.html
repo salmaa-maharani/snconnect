@@ -52,6 +52,10 @@
       <h3 id="room-title">Pilih Room</h3>
     </div>
     <div id="messages"></div>
+    <div id="reply-preview" style="display:none">
+     <span id="reply-text"></span>
+      <button onclick="cancelReply()">✕</button>
+    </div>
     <div class="input-area">
       <input type="text" id="msg-input" placeholder="Ketik pesan..." 
              onkeypress="if(event.key==='Enter') sendMessage()">

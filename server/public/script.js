@@ -20,6 +20,10 @@ function showTab(tab) {
 async function register() {
   const username = document.getElementById('reg-username').value;
   const password = document.getElementById('reg-password').value;
+  if (password.length < 6) {
+    document.getElementById('reg-msg').textContent = 'Password minimal 6 karakter!';
+    return;
+  }
 
   const res = await fetch(`${SERVER}/register`, {
     method: 'POST',
@@ -128,15 +132,60 @@ function playNotifSound() {
   oscillator.start(ctx.currentTime);
   oscillator.stop(ctx.currentTime + 0.3);
 }
-function displayMessage(username, message, time) {
+let replyTo = null;
+
+function setReply(username, message) {
+  replyTo = { username, message };
+  document.getElementById('reply-preview').style.display = 'flex';
+  document.getElementById('reply-text').textContent = `${username}: ${message}`;
+}
+
+function cancelReply() {
+  replyTo = null;
+  document.getElementById('reply-preview').style.display = 'none';
+}
+
+function sendMessage() {
+  const input = document.getElementById('msg-input');
+  const message = input.value.trim();
+  if (!message || !currentRoom) return;
+
+  socket.emit('send_message', {
+    username: currentUser,
+    message,
+    room: currentRoom,
+    replyTo: replyTo
+  });
+  input.value = '';
+  cancelReply();
+}
+
+socket.on('receive_message', (data) => {
+  if (data.username !== currentUser) {
+    playNotifSound();
+  }
+  displayMessage(data.username, data.message, data.created_at, data.replyTo);
+});
+
+function displayMessage(username, message, time, replyTo) {
   const div = document.createElement('div');
   div.className = 'message ' + (username === currentUser ? 'mine' : 'others');
 
   const t = new Date(time).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+
+  let replyHTML = '';
+  if (replyTo) {
+    replyHTML = `<div class="reply-bubble">↩ ${replyTo.username}: ${replyTo.message}</div>`;
+  }
+
   div.innerHTML = `
+    ${replyHTML}
     <div class="sender">${username}</div>
-    <div>${message}</div>
-    <div class="time">${t}</div>
+    <div class="msg-text">${message}</div>
+    <div class="time-reply">
+      <span class="time">${t}</span>
+      <button class="reply-btn" onclick="setReply('${username}', '${message}')">↩ Reply</button>
+    </div>
   `;
 
   document.getElementById('messages').appendChild(div);
