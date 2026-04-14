@@ -22,6 +22,28 @@ function showBrowserNotif(username, message) {
       icon: 'https://cdn-icons-png.flaticon.com/512/134/134914.png'
     });
   }
+  showInAppNotif(username, message);
+}
+
+function showInAppNotif(username, message) {
+  const notif = document.createElement('div');
+  notif.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #e94560;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    max-width: 250px;
+    animation: slideIn 0.3s ease;
+  `;
+  notif.innerHTML = `<b>💬 ${username}</b><br>${message}`;
+  document.body.appendChild(notif);
+  setTimeout(() => notif.remove(), 4000);
 }
 
 function showTab(tab) {

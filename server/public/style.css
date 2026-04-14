@@ -109,3 +109,7 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
   cursor: pointer;
   font-size: 16px;
 }
+@keyframes slideIn {
+  from { transform: translateX(100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
