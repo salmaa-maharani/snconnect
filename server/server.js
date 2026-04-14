@@ -85,7 +85,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('send_message', (data) => {
-    const { username, message, room } = data;
+    const { username, message, room, replyTo } = data;
 
     // Simpan ke database
     db.query(
@@ -97,6 +97,8 @@ io.on('connection', (socket) => {
     io.to(room).emit('receive_message', {
       username,
       message,
+      room,
+      replyTo,
       created_at: new Date()
     });
   });
