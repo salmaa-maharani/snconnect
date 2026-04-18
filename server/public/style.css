@@ -10,7 +10,7 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
   background: #16213e; padding: 30px; border-radius: 12px; width: 100%; max-width: 350px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
-.auth-box h2 { text-align: center; margin-bottom: 8px; color: #e94560; }
+.auth-box h2 { text-align: center; margin-bottom: 8px; color: #e94560; font-size: 24px; }
 .tab-buttons { display: flex; margin-bottom: 20px; }
 .tab-buttons button {
   flex: 1; padding: 10px; border: none; cursor: pointer;
@@ -18,11 +18,11 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
 }
 .tab-buttons button.active { background: #e94560; }
 .auth-box input {
-  width: 100%; padding: 10px; margin-bottom: 12px;
-  background: #0f3460; border: none; border-radius: 6px; color: white;
+  width: 100%; padding: 12px; margin-bottom: 12px;
+  background: #0f3460; border: none; border-radius: 6px; color: white; font-size: 15px;
 }
 .auth-box button[onclick] {
-  width: 100%; padding: 10px; background: #e94560;
+  width: 100%; padding: 12px; background: #e94560;
   border: none; border-radius: 6px; color: white; cursor: pointer; font-size: 15px;
 }
 .msg { margin-top: 10px; text-align: center; font-size: 13px; color: #f0c040; }
@@ -119,10 +119,10 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
 
 .slogan {
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
   color: #aaa;
-  margin-top: -15px;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   font-style: italic;
 }
 
@@ -141,6 +141,32 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
 
 /* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
+  body { font-size: 15px; }
+
+  .auth-box {
+    padding: 24px 20px;
+  }
+  .auth-box h2 {
+    font-size: 22px;
+  }
+  .slogan {
+    font-size: 12px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+  }
+  .tab-buttons button {
+    font-size: 14px;
+    padding: 12px;
+  }
+  .auth-box input {
+    font-size: 15px;
+    padding: 12px;
+  }
+  .auth-box button[onclick] {
+    font-size: 15px;
+    padding: 12px;
+  }
+
   .sidebar {
     width: 110px;
     padding: 10px;
@@ -150,38 +176,52 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
     margin-bottom: 8px;
   }
   .room-btn {
-    font-size: 11px;
+    font-size: 12px;
     padding: 8px 6px;
   }
   .logout-btn {
-    font-size: 11px;
+    font-size: 12px;
     padding: 8px;
   }
   #current-user {
     font-size: 11px;
   }
   .message {
-    max-width: 85%;
-    font-size: 13px;
+    max-width: 88%;
+    font-size: 14px;
+  }
+  .message .sender {
+    font-size: 12px;
+  }
+  .message .time {
+    font-size: 11px;
   }
   .input-area {
     padding: 8px 10px;
   }
   .input-area input {
-    font-size: 13px;
+    font-size: 14px;
     padding: 10px;
   }
   .input-area button {
     padding: 10px 14px;
-    font-size: 13px;
+    font-size: 14px;
   }
   .chat-header {
     padding: 10px 15px;
   }
   .chat-header h3 {
-    font-size: 14px;
+    font-size: 15px;
   }
   #messages {
     padding: 10px;
+    gap: 8px;
+  }
+  .reply-btn {
+    font-size: 12px;
+  }
+  .footer {
+    font-size: 10px;
+    padding: 5px;
   }
 }
