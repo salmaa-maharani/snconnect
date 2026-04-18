@@ -4,12 +4,13 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
 /* AUTH */
 #auth-page {
   display: flex; justify-content: center; align-items: center; height: 100vh;
+  padding: 20px;
 }
 .auth-box {
-  background: #16213e; padding: 30px; border-radius: 12px; width: 350px;
+  background: #16213e; padding: 30px; border-radius: 12px; width: 100%; max-width: 350px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
-.auth-box h2 { text-align: center; margin-bottom: 20px; color: #e94560; }
+.auth-box h2 { text-align: center; margin-bottom: 8px; color: #e94560; }
 .tab-buttons { display: flex; margin-bottom: 20px; }
 .tab-buttons button {
   flex: 1; padding: 10px; border: none; cursor: pointer;
@@ -27,7 +28,7 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
 .msg { margin-top: 10px; text-align: center; font-size: 13px; color: #f0c040; }
 
 /* CHAT */
-#chat-page { display: flex; height: 100vh; }
+#chat-page { display: flex; height: 100vh; padding-bottom: 28px; }
 .sidebar {
   width: 220px; background: #16213e; padding: 20px;
   display: flex; flex-direction: column; gap: 10px;
@@ -44,7 +45,7 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
 }
 #current-user { font-size: 13px; color: #aaa; }
 
-.chat-area { flex: 1; display: flex; flex-direction: column; }
+.chat-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 .chat-header {
   padding: 15px 20px; background: #16213e; border-bottom: 1px solid #0f3460;
 }
@@ -58,7 +59,7 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
 .message .time { font-size: 10px; color: #aaa; margin-top: 4px; text-align: right; }
 
 .input-area {
-  display: flex; padding: 15px; background: #16213e; gap: 10px;
+  display: flex; padding: 10px 15px; background: #16213e; gap: 10px;
 }
 .input-area input {
   flex: 1; padding: 12px; background: #0f3460;
@@ -68,6 +69,7 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
   padding: 12px 20px; background: #e94560;
   border: none; border-radius: 8px; color: white; cursor: pointer;
 }
+
 .reply-bubble {
   background: rgba(255,255,255,0.1);
   border-left: 3px solid #e94560;
@@ -109,10 +111,12 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
   cursor: pointer;
   font-size: 16px;
 }
+
 @keyframes slideIn {
   from { transform: translateX(100px); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
+
 .slogan {
   text-align: center;
   font-size: 12px;
@@ -121,6 +125,7 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
   margin-bottom: 15px;
   font-style: italic;
 }
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -129,7 +134,54 @@ body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; height
   background: #0f3460;
   color: #aaa;
   text-align: center;
-  padding: 8px;
-  font-size: 12px;
+  padding: 6px;
+  font-size: 11px;
   z-index: 100;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 110px;
+    padding: 10px;
+  }
+  .sidebar h3 {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+  .room-btn {
+    font-size: 11px;
+    padding: 8px 6px;
+  }
+  .logout-btn {
+    font-size: 11px;
+    padding: 8px;
+  }
+  #current-user {
+    font-size: 11px;
+  }
+  .message {
+    max-width: 85%;
+    font-size: 13px;
+  }
+  .input-area {
+    padding: 8px 10px;
+  }
+  .input-area input {
+    font-size: 13px;
+    padding: 10px;
+  }
+  .input-area button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+  .chat-header {
+    padding: 10px 15px;
+  }
+  .chat-header h3 {
+    font-size: 14px;
+  }
+  #messages {
+    padding: 10px;
+  }
 }
