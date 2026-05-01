@@ -84,32 +84,15 @@ io.on('connection', (socket) => {
     const { username, message, room, replyTo } = data;
     db.query(
       'INSERT INTO messages (username, message, room) VALUES (?, ?, ?)',
-      [username, message, room],
-      (err, result) => {
-        if (err) return;
-        io.to(room).emit('receive_message', {
-          id: result.insertId,
-          username,
-          message,
-          room,
-          replyTo,
-          created_at: new Date()
-        });
-      }
+      [username, message, room]
     );
-  });
-
-  socket.on('delete_message', (data) => {
-    const { id, username, room } = data;
-    db.query(
-      'DELETE FROM messages WHERE id = ? AND username = ?',
-      [id, username],
-      (err, result) => {
-        if (!err && result.affectedRows > 0) {
-          io.to(room).emit('message_deleted', { id });
-        }
-      }
-    );
+    io.to(room).emit('receive_message', {
+      username,
+      message,
+      room,
+      replyTo,
+      created_at: new Date()
+    });
   });
 
   socket.on('disconnect', () => {
